@@ -17,6 +17,22 @@ const Modal = {
             .remove('active')
     }
 }
+function carregar(){
+    const header = document.querySelector('header')
+    let i=0 
+    var data = new Date()
+    var hora = data.getHours()
+    if(hora >= 0 && hora < 12){
+        
+        header.style.background ='#3dd705'
+     }else if(hora >= 12 && hora < 18){
+        
+        header.style.background ='#49AA26'
+     }else {
+        
+        header.style.background ='#363f5f'
+     }
+}
 
 const Storage = {
     get() {
@@ -206,10 +222,14 @@ const App = {
         DOM.updateBalance()
 
         Storage.set(Transaction.all)
+        carregar()
     },
     reload() {
         DOM.clearTransactions()
+        
         App.init()
+        
+        
     },
 }
 
